@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Environment variables
+.env
+
+# Django
+*.log
+db.sqlite3
+media/
+
+# Migrations (keep if you’re working in a team!)
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Static & collected files
+staticfiles/
+static/
+collected_static/
+
+# Tailwind
+node_modules/
+theme/static_src/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-axt+yzw8%)wz-itvvkn9z=&i1o86$gawzyk4n#k@5iqx)i^_zp'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG","False") == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -42,10 +45,10 @@ INSTALLED_APPS = [
     'theme'
 ]
 
-
-TAILWIND_APP_NAME = 'theme' # This is the name of the app that will be used to generate the tailwind files
-INTERNAL_IPS = ['127.0.0.1']
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+# Every thing is going inside the .env
+TAILWIND_APP_NAME = os.getenv("TAILWIND_APP_NAME", "theme") # This is the name of the app that will be used to generate the tailwind files
+INTERNAL_IPS = os.getenv("INTERNAL_IPS", "127.0.0.1").split(",")
+NPM_BIN_PATH = os.getenv("NPM_BIN_PATH", "npm")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,7 +86,8 @@ WSGI_APPLICATION = 'yash_vaidya.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.getenv("DB_NAME", BASE_DIR / "db.sqlite3"),
     }
 }
 
