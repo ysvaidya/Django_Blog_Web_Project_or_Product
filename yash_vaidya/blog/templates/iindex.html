@@ -4,15 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body style="text-align:center; margin-top:50px; font-family:Arial, sans-serif;">
     <!-- body style="text-align:center; margin-top:50px; font-family:Arial, sans-serif;" -->
 
+    <div class="flex justify-end p-4">
+        <a href="{% url 'post_list' %}">
+            <button class= "bg-amber-600 rounded-3xl text-white px-4 py-2 border hover:border-amber-600 hover:bg-white hover:text-amber-600 transition-all">
+                Visit Blogs
+            </button>
+        </a>
+    </div>
+
     <h1>Hello, Django!</h1>
     <p>This is a super simple minimalist page showing an image.</p>
+
+
 
     <!-- Image directly referenced (make sure the file is in your templates folder or accessible path) -->
     <!-- img src="myimage.jpg" alt="My Image" width="200" height="200" style="border-radius:50%;" -->
 
 </body>
 </html>
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Blog Posts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+      <h1 class="text-3xl font-bold text-gray-900">All Blog Posts</h1>
+      <p class="text-gray-600 mt-2">Browse all posts and find something to read.</p>
+    </div>
+  </header>
+
+  <!-- Posts Grid -->
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Single Post Card -->
+      <article class="bg-white shadow-sm rounded-xl overflow-hidden border border-gray-200 hover:shadow-md transition">
+        <img src="https://source.unsplash.com/600x400/?nature,water" alt="Post Thumbnail" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <h2 class="text-xl font-semibold text-gray-900 hover:text-indigo-600">
+            <a href="#">Exploring the Mountains</a>
+          </h2>
+          <p class="text-gray-600 text-sm mt-2">A short excerpt of the blog post goes here to give the reader an idea...</p>
+          <div class="mt-4 flex items-center justify-between text-sm text-gray-500">
+            <span>Sep 20, 2025</span>
+            <a href="#" class="text-indigo-500 hover:underline">Read more →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Repeat for more posts -->
+      <article class="bg-white shadow-sm rounded-xl overflow-hidden border border-gray-200 hover:shadow-md transition">
+        <img src="https://source.unsplash.com/600x400/?city,night" alt="Post Thumbnail" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <h2 class="text-xl font-semibold text-gray-900 hover:text-indigo-600">
+            <a href="#">City Lights at Night</a>
+          </h2>
+          <p class="text-gray-600 text-sm mt-2">An example of another blog post card to fill the grid layout...</p>
+          <div class="mt-4 flex items-center justify-between text-sm text-gray-500">
+            <span>Sep 10, 2025</span>
+            <a href="#" class="text-indigo-500 hover:underline">Read more →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white shadow-sm rounded-xl overflow-hidden border border-gray-200 hover:shadow-md transition">
+        <img src="https://source.unsplash.com/600x400/?books,library" alt="Post Thumbnail" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <h2 class="text-xl font-semibold text-gray-900 hover:text-indigo-600">
+            <a href="#">Why Reading Matters</a>
+          </h2>
+          <p class="text-gray-600 text-sm mt-2">Highlighting the importance of books and knowledge in everyday life...</p>
+          <div class="mt-4 flex items-center justify-between text-sm text-gray-500">
+            <span>Aug 30, 2025</span>
+            <a href="#" class="text-indigo-500 hover:underline">Read more →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-10 flex justify-center space-x-2">
+      <a href="#" class="px-3 py-1 border rounded-md text-gray-600 hover:bg-gray-100">Prev</a>
+      <a href="#" class="px-3 py-1 border rounded-md bg-indigo-500 text-white">1</a>
+      <a href="#" class="px-3 py-1 border rounded-md text-gray-600 hover:bg-gray-100">2</a>
+      <a href="#" class="px-3 py-1 border rounded-md text-gray-600 hover:bg-gray-100">3</a>
+      <a href="#" class="px-3 py-1 border rounded-md text-gray-600 hover:bg-gray-100">Next</a>
+    </div>
+  </main>
+
+</body>
+</html> {% endcomment %}

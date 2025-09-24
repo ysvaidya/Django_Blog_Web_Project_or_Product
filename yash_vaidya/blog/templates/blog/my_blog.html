@@ -1,0 +1,7 @@
+<h1>My Blogs</h1>
+{% for post in posts %}
+  <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+  <p>Last updated: {{ post.updated_at }}</p>
+{% empty %}
+  <p>You haven’t written any posts yet.</p>
+{% endfor %}

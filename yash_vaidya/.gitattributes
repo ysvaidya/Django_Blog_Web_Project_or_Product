@@ -1,0 +1,32 @@
+# Python files
+*.py text eol=lf
+
+# HTML templates
+*.html text eol=lf
+*.htm text eol=lf
+
+# CSS/JS
+*.css text eol=lf
+*.js text eol=lf
+
+# JSON/YAML
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Text files / configs
+*.txt text eol=lf
+*.md text eol=lf
+*.gitignore text eol=lf
+
+# Images and binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

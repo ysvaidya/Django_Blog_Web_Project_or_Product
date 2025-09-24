@@ -1,240 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Insights | Machine Learning Blog</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3b82f6',
-                        secondary: '#2563eb',
-                        accent: '#dbeafe',
-                        dark: '#1e293b',
-                        light: '#f8fafc'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .menu-open {
-            max-height: 500px;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .menu-closed {
-            max-height: 0;
-            opacity: 0;
-            transform: translateY(-10px);
-            overflow: hidden;
-        }
-        .transition-all {
-            transition: all 0.4s ease;
-        }
-        .blur-background {
-            backdrop-filter: blur(5px);
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-    </style>
-</head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="#" class="text-xl font-bold text-primary">
-                    <i class="fas fa-brain mr-2"></i>ML Insights
-                </a>
-            </div>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6">
-                <a href="#" class="text-dark hover:text-primary transition-all">Home</a>
-                <a href="#" class="text-dark hover:text-primary transition-all">Articles</a>
-                <a href="#" class="text-dark hover:text-primary transition-all">Tutorials</a>
-                <a href="#" class="text-dark hover:text-primary transition-all">Resources</a>
-                <a href="#" class="text-dark hover:text-primary transition-all">Community</a>
-            </div>
-            
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-dark focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="menu-closed transition-all md:hidden bg-white border-t">
-            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-                <a href="#" class="py-2 text-dark hover:text-primary transition-all">Home</a>
-                <a href="#" class="py-2 text-dark hover:text-primary transition-all">Articles</a>
-                <a href="#" class="py-2 text-dark hover:text-primary transition-all">Tutorials</a>
-                <a href="#" class="py-2 text-dark hover:text-primary transition-all">Resources</a>
-                <a href="#" class="py-2 text-dark hover:text-primary transition-all">Community</a>
-                <a href="#" class="py-2 bg-primary text-white rounded text-center hover:bg-secondary transition-all">Sign Up</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Overlay when menu is open -->
-    <div id="overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity z-10"></div>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-center text-dark mb-6">Machine Learning Insights</h1>
-            <p class="text-lg text-gray-700 text-center mb-8">Latest research, tutorials, and resources for ML enthusiasts</p>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold text-primary mb-4">Welcome to Our ML Community</h2>
-                <p class="text-gray-700 mb-4">
-                    We provide an unconditional learning experience for machine learning enthusiasts of all levels. 
-                    Our community is built on consistency and knowledge sharing.
-                </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                    <div class="bg-accent p-4 rounded-lg">
-                        <h3 class="font-semibold text-primary mb-2">Latest Articles</h3>
-                        <p class="text-sm text-gray-700">Stay updated with the newest developments in ML</p>
-                    </div>
-                    <div class="bg-accent p-4 rounded-lg">
-                        <h3 class="font-semibold text-primary mb-2">Hands-on Tutorials</h3>
-                        <p class="text-sm text-gray-700">Practical guides to implement ML algorithms</p>
-                    </div>
-                </div>
-                
-                <div class="mt-6">
-                    <h3 class="text-xl font-semibold text-dark mb-3">What We Offer:</h3>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                        <li>Comprehensive learning resources for all skill levels</li>
-                        <li>Community support and collaboration opportunities</li>
-                        <li>Latest research papers summarized and explained</li>
-                        <li>Practical projects to build your portfolio</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="mt-8 text-center">
-                <a href="#" class="inline-block bg-primary text-white px-6 py-3 rounded-md hover:bg-secondary transition-all">Explore Articles</a>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const overlay = document.getElementById('overlay');
-            
-            menuToggle.addEventListener('click', function() {
-                const isOpen = mobileMenu.classList.contains('menu-open');
-                
-                if (isOpen) {
-                    mobileMenu.classList.remove('menu-open');
-                    mobileMenu.classList.add('menu-closed');
-                    overlay.classList.remove('opacity-50');
-                    overlay.classList.add('opacity-0');
-                    overlay.classList.add('pointer-events-none');
-                } else {
-                    mobileMenu.classList.remove('menu-closed');
-                    mobileMenu.classList.add('menu-open');
-                    overlay.classList.remove('opacity-0');
-                    overlay.classList.remove('pointer-events-none');
-                    overlay.classList.add('opacity-50');
-                }
-            });
-            
-            // Close menu when clicking on overlay
-            overlay.addEventListener('click', function() {
-                mobileMenu.classList.remove('menu-open');
-                mobileMenu.classList.add('menu-closed');
-                overlay.classList.remove('opacity-50');
-                overlay.classList.add('opacity-0');
-                overlay.classList.add('pointer-events-none');
-            });
-        });
-    </script>
-</body>
-</html>
-
-
-
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minimalist Navbar</title>
+  <title>Minimalist Blog Navbar</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans bg-black text-white relative">
+<body class="bg-gray-50">
 
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-6 py-4 bg-black fixed w-full top-0 z-50">
-    <div class="text-xl font-semibold">CyberCode</div>
-    <!-- Hamburger -->
-    <button id="menu-btn" class="space-y-1.5">
-      <div class="w-6 h-0.5 bg-white"></div>
-      <div class="w-6 h-0.5 bg-white"></div>
-      <div class="w-6 h-0.5 bg-white"></div>
-    </button> 
+  <nav class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        
+        <!-- Left: Logo -->
+        <div class="flex items-center">
+          <a href="/" class="text-2xl font-bold text-gray-800">MyBlog</a>
+        </div>
+        
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-600 hover:text-indigo-500">Home</a>
+          <a href="#" class="text-gray-600 hover:text-indigo-500">Categories</a>
+          <a href="#" class="text-gray-600 hover:text-indigo-500">About</a>
+          <a href="#" class="text-gray-600 hover:text-indigo-500">Contact</a>
+        </div>
+        
+        <!-- Right: Buttons -->
+        <div class="hidden md:flex items-center space-x-4">
+          <button class="text-gray-600 hover:text-indigo-500">Search</button>
+          <a href="#" class="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600">Sign in</a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="flex md:hidden items-center">
+          <button id="menu-btn" class="text-gray-600 hover:text-indigo-500 focus:outline-none">
+            <!-- Hamburger icon -->
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-4 pb-3 space-y-3 bg-white border-t border-gray-200">
+      <a href="#" class="block text-gray-600 hover:text-indigo-500">Home</a>
+      <a href="#" class="block text-gray-600 hover:text-indigo-500">Categories</a>
+      <a href="#" class="block text-gray-600 hover:text-indigo-500">About</a>
+      <a href="#" class="block text-gray-600 hover:text-indigo-500">Contact</a>
+      <a href="#" class="block px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600">Sign in</a>
+    </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="hero" class="h-screen flex items-center justify-center bg-gradient-to-b from-black to-neutral-900">
-    <h1 class="text-4xl md:text-6xl font-bold text-center">First Neural Networking Vlog</h1>
-  </section>
-
-  <!-- Sidebar -->
-  <div id="sidebar" class="fixed top-0 right-0 h-full w-72 bg-neutral-900 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
-    <div class="flex justify-between items-center px-6 py-4 border-b border-neutral-700">
-      <span class="text-lg font-semibold">Menu</span>
-      <button id="close-btn" class="text-2xl">&times;</button>
-    </div>
-    <ul class="flex flex-col space-y-6 p-6 text-lg">
-      <li><a href="#" class="hover:text-orange-400">Cohorts</a></li>
-      <li><a href="#" class="hover:text-orange-400">Udemy</a></li>
-      <li><a href="#" class="hover:text-orange-400">Docs</a></li>
-      <li><a href="#" class="hover:text-orange-400">UI Vault</a></li>
-      <li><a href="#" class="hover:text-orange-400">Reviews</a></li>
-    </ul>
-  </div>
-
-  <!-- Overlay -->
-  <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-md hidden z-40"></div>
-
-  <!-- Script -->
+  <!-- Script to toggle mobile menu -->
   <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-btn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const hero = document.getElementById('hero');
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-    menuBtn.addEventListener('click', () => {
-      sidebar.classList.remove('translate-x-full');
-      overlay.classList.remove('hidden');
-      hero.classList.add('blur-sm');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      sidebar.classList.add('translate-x-full');
-      overlay.classList.add('hidden');
-      hero.classList.remove('blur-sm');
-    });
-
-    overlay.addEventListener('click', () => {
-      sidebar.classList.add('translate-x-full');
-      overlay.classList.add('hidden');
-      hero.classList.remove('blur-sm');
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
     });
   </script>
 
 </body>
-</html> {% endcomment %}
+</html>
+   

@@ -50,6 +50,7 @@ TAILWIND_APP_NAME = os.getenv("TAILWIND_APP_NAME", "theme") # This is the name o
 INTERNAL_IPS = os.getenv("INTERNAL_IPS", "127.0.0.1").split(",")
 NPM_BIN_PATH = os.getenv("NPM_BIN_PATH", "npm")
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
