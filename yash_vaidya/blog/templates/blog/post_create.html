@@ -1,6 +1,91 @@
-<h1>Create Post</h1>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
+{% extends "iindex.html" %}
+{% block content %}
+  <main class=" min-h-screen ml-16 mt-16  grid grid-cols-10 px-28 py-10 bg-white">
+    <div class="col-span-7 space-y-9 px-32">
+      <h1 class=" text-2xl font-semibold text-black">Create New Post</h1>
+      
+      <form method="POST" class="">
+        {% csrf_token %}
+        <div class="space-y-9">
+          <div class="flex flex-col gap-2">  
+            <label for="title" class="font-semibold"> 
+              Title*
+            </label>
+            {{ form.title }}
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="content" class=" font-semibold ">
+              Content*
+            </label>
+            {% comment %} <div class="flex gap-9 mb-2">
+              <button type="button" onclick="wrapText('**','**')" class="bg-gray-100 px-3 py-0.5 rounded-xl  font-semibold">B</button>
+              <button type="button" onclick="wrapText('_','_')" class="bg-gray-100 px-3 py-0.5 rounded-xl  italic">I</button>
+              <button type="button" onclick="insertNewLine()" class="bg-gray-100 px-3 py-0.5 rounded-xl ">↵</button>
+              <button type="button" onclick="insertTab()" class="bg-gray-100 px-3 py-0.5 rounded-xl ">Tab</button>
+            </div> {% endcomment %}
+            {{ form.body }}
+          </div>
+          <div class="flex justify-end gap-3">
+            <button type="submit" 
+              name="action" 
+              value="draft"
+              class="border border-gray-200 hover:border-hidden p-1 pl-5 pr-5 rounded-full text-black hover:bg-gray-100 font-semibold transition-all duration-300">
+                Save Draft
+            </button>
+            <button type="submit"
+              name="action" 
+              value="published"
+              class= "border border-gray-200 hover:border-hidden p-1 pl-5 pr-5 rounded-full text-black hover:bg-gray-100 font-semibold transition-all duration-300">
+                Save
+            </button>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+   <div class="col-span-3 bg-gray-50 shadow-lg rounded-xl pl-5 pt-5 mt-3 text-sm text-gray-600">
+      <p class="font-semibold mb-1 text-gray-600"> Markdown Formatting Tips:</p>
+      <ul class="list-disc pl-5 space-y-2 ">
+        <li class="text-gray-500"><code>**bold**</code> → <strong>bold text</strong></li>
+        <li class="text-gray-500"><code>_italic_</code> → <em>italic text</em></li>
+        <li class="text-gray-500"><code>~~strike~~</code> → <del>strike text</del></li>
+        <li class="text-gray-500"><code class="font-semibold"># </code>Heading → Heading</li>
+        <p class="text-gray-500">.......to.......</p>
+        <li class="text-gray-500"><code class="font-semibold">###### </code>Heading → Light Heading</li>
+
+        <li class="text-gray-500">Press <kbd class="font-semibold">Enter</kbd> for new lines</li>
+        <li class="text-gray-500">No <kbd class="font-semibold">Tab</kbd> to indent your paragraph</li>
+        <p class='font-semibold text-gray-500'>Note: Sorry for all the cause.</p> 
+      </ul>
+    </div>
+  
+  </main>
+{% endblock %}
+{% block scripts %}
+  <script>
+    function wrapText(before, after) {
+      const textarea = document.getElementById("content");
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selectedText = textarea.value.substring(start, end);
+      const newText = before + selectedText + after;
+      textarea.setRangeText(newText, start, end, "end");
+      textarea.focus();
+    }
+
+    function insertNewLine() {
+      const textarea = document.getElementById("content");
+      const start = textarea.selectionStart;
+      textarea.setRangeText("\n", start, start, "end");
+      textarea.focus();
+    }
+
+    function insertTab() {
+      const textarea = document.getElementById("content");
+      const start = textarea.selectionStart;
+      textarea.setRangeText("    ", start, start, "end"); // 4 spaces = tab
+      textarea.focus();
+    }
+  </script>
+{% endblock %}
+    

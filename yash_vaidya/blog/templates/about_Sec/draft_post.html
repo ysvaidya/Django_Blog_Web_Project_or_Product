@@ -1,0 +1,22 @@
+
+ 
+{% extends "about.html" %}
+{% block posts %}
+<main class=" space-y-9 px-3 py-6">
+    
+  {% comment %} <h1 class="font-bold text-2xl">Your Drafts</h1> {% endcomment %}
+  
+  <div class=" col-span-8 space-y-6">
+    {% for post in drafts %}
+      <div class=" shadow-md p-6 pb-6 hover:shadow-lg transition-all duration-300 rounded-xl ">
+        <h2 class="text-lg font-semibold text-gray-900 mb-2">{{ post.title }}</h2>
+        <div class="flex justify-between text-sm text-gray-500">
+          <span class=" text-sm">{{post.created_at}}</span>
+          <a href="{% url 'post_details' post.id %}" class="text-blue-500 hover:underline font-semibold">Read →</a>
+        </div>
+      </div>
+    {% empty%}
+      <p class="italic">Sorry, You don't have any Drafts posts. </p>
+    {% endfor %}
+  </div>
+{% endblock  %}

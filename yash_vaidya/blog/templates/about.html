@@ -1,0 +1,53 @@
+{% extends "iindex.html" %}
+{% block content %}
+
+<main class=" ml-16 mt-16 h-[calc(100vh-5rem)]  px-28 py-8 bg-white ">
+    <div class=" space-y-5 pb-8 w-full border-b border-gray-200">
+        <div class="flex items-center justify-between  ">
+            <div>
+                <h1 class="text-4xl font-bold">Your Saved ideas</h1>
+            </div>
+        
+            <div class="flex py-3 px-6 gap-3 items-center">
+                <div class="w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center text-lg ">
+                    {{ user.username|first|upper }}
+                </div>
+
+                <div class="space-y-1">
+                    
+                    <h1 class="block text-gray-800 font-semibold text-xl  ">{{ user.username }}</h1>
+                    
+                    {% comment %} <p>{{ user.email }}</p> {% endcomment %}
+                    <p class="text-sm font-semibold text-gray-500">
+                    0 followers
+                    </p>
+                </div>
+                <div class="pl-4">
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-xl font-semibold text-gray-800">View profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between ">
+            <div class=" space-x-12">
+                <a href="{% url 'my_posts'%}" class=" font-semibold hover:underline focus:underline underline-offset-8 ">My blogs</a>
+                <a href="{% url 'draft_post'%}" class=" font-semibold hover:underline focous:underline underline-offset-8 ">Drafts</a>
+                <a href="#" class=" font-semibold hover:underline focous:underline underline-offset-8 ">Empty</a>
+            </div>
+            
+
+            <div class=" pr-9 pt-3">
+                <a href="{% url 'post_create'%}" class="py-2.5 px-6 bg-orange-500 border-2 border-orange-500 hover:bg-white hover:text-orange-500 text-white rounded-2xl font-semibold transition-all duration-200">Create</a> 
+            </div>
+        </div>
+        
+    </div>
+
+    {% block posts %}
+    <div class='pt-5'>
+      <p class="text-gray-500 text-sm italic">Sorry, you haven't saved any ideas or post.</p>
+    </div>    
+    {% endblock %}
+
+</main>
+
+{% endblock  %}

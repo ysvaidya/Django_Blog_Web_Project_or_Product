@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.urls import views as auth_views
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', views.home_page, name = "home_page"),
-    path('blog/', include('blog.urls')),
+    path('', include('blog.urls')),
+    path('account/', include('django.contrib.auth.urls')),
+    path('base/',views.home_page, name="base" )
+
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

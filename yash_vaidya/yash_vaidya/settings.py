@@ -46,10 +46,13 @@ INSTALLED_APPS = [
 ]
 
 # Every thing is going inside the .env
-TAILWIND_APP_NAME = os.getenv("TAILWIND_APP_NAME", "theme") # This is the name of the app that will be used to generate the tailwind files
-INTERNAL_IPS = os.getenv("INTERNAL_IPS", "127.0.0.1").split(",")
-NPM_BIN_PATH = os.getenv("NPM_BIN_PATH", "npm")
+# TAILWIND_APP_NAME = os.getenv("TAILWIND_APP_NAME", "theme") # This is the name of the app that will be used to generate the tailwind files
 
+# NPM_BIN_PATH = os.getenv("NPM_BIN_PATH")
+
+TAILWIND_APP_NAME = 'theme'
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+INTERNAL_IPS = ["127.0.0.1"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -147,3 +150,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/account/login/'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

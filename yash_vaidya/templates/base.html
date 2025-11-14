@@ -1,71 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minimalist Blog Navbar</title>
+  <title>Document</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
+<body class="">
+  
+  <div>
+    <div class="flex gap-2 items-center bg-white p-6 pl-4 lg:pl-28 sticky top-0">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-cyan-900 items-center" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+      </svg>
+        <h1 class="font-bold text-2xl text-cyan-900">Brand Logo</h1>
+    </div>
 
-  <!-- Navbar -->
-  <nav class="bg-white border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        
-        <!-- Left: Logo -->
-        <div class="flex items-center">
-          <a href="/" class="text-2xl font-bold text-gray-800">MyBlog</a>
+    <main>
+      <div class="grid grid-cols-1 lg:grid-cols-2 bg-cyan-950 pt-10 lg:pt-24 px-6 lg:px-30 pb-24 gap-12 ">
+  
+        <!-- LEFT SIDE -->
+        <div class="space-y-9 lg:space-y-12">
+          <h1 class="text-white text-center lg:text-start text-5xl sm:text-6xl font-bold leading-tight">
+            Write your thoughts with good intent.
+          </h1>
         </div>
-        
-        <!-- Desktop Nav Links -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#" class="text-gray-600 hover:text-indigo-500">Home</a>
-          <a href="#" class="text-gray-600 hover:text-indigo-500">Categories</a>
-          <a href="#" class="text-gray-600 hover:text-indigo-500">About</a>
-          <a href="#" class="text-gray-600 hover:text-indigo-500">Contact</a>
-        </div>
-        
-        <!-- Right: Buttons -->
-        <div class="hidden md:flex items-center space-x-4">
-          <button class="text-gray-600 hover:text-indigo-500">Search</button>
-          <a href="#" class="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600">Sign in</a>
-        </div>
-        
-        <!-- Mobile menu button -->
-        <div class="flex md:hidden items-center">
-          <button id="menu-btn" class="text-gray-600 hover:text-indigo-500 focus:outline-none">
-            <!-- Hamburger icon -->
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+
+        <!-- RIGHT SIDE -->
+        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center mt-3">
+          <button class="whitespace-nowrap overflow-hidden text-ellipsis w-full sm:w-auto lg:w-full bg-white py-2 px-4 rounded-2xl text-2xl font-bold text-cyan-800 text-center hover:bg-gray-100  transition">
+            Documentation
+          </button>
+
+          <button class="whitespace-nowrap overflow-hidden text-ellipsis w-full sm:w-auto lg:w-full bg-cyan-600 py-2 px-4 rounded-2xl text-2xl font-bold text-white text-center hover:bg-cyan-500 transition">
+            Get Your Blogs
           </button>
         </div>
 
-      </div>
-    </div>
+        <div class="grid">
 
-    <!-- Mobile Menu (hidden by default) -->
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-4 pb-3 space-y-3 bg-white border-t border-gray-200">
-      <a href="#" class="block text-gray-600 hover:text-indigo-500">Home</a>
-      <a href="#" class="block text-gray-600 hover:text-indigo-500">Categories</a>
-      <a href="#" class="block text-gray-600 hover:text-indigo-500">About</a>
-      <a href="#" class="block text-gray-600 hover:text-indigo-500">Contact</a>
-      <a href="#" class="block px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600">Sign in</a>
-    </div>
-  </nav>
+        </div>
+      </div> 
+      <img src="{% static 'images/main_logo.png' %}" alt="Logo" class="h-10 w-auto hover:opacity-80 transition">
+    </main>
 
-  <!-- Script to toggle mobile menu -->
-  <script>
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-
+  </div>
 </body>
 </html>
-   

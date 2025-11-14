@@ -1,0 +1,7 @@
+Fir : After hitting blog.url - shown IINDEX.HTML
+Sec : good UI for IINDEX.HTML 
+                    1. button for CREATE+
+                    2. button for SIGN-UP / SIGN-IN
+                    3. important blogs post 
+                    4. no CREATE+ before SIGN-UP / SIGN-IN
+Thi: good Tailwind for CREATE+
