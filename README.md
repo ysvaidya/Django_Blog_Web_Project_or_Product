@@ -19,7 +19,7 @@ This project is built to learn Django fundamentals like models, views, templates
 
 ## 📸 Screenshot
 
-> ss is in the code run it in your code base..  
+> Screenshot is in the code format. Run it in your code base.
 ```markdown
 <img width="1898" height="795" alt="Screenshot 2025-11-22 163438" src="https://github.com/user-attachments/assets/fddb639e-37c5-4e70-bb00-46d7f3dfde31" />
 ```
