@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout
 import markdown
 from django.utils.safestring import mark_safe
 from django.contrib import messages
+from django.db.models import Q
 
 def about(request):
     return render(request, 'about.html')
@@ -81,6 +82,21 @@ def post_update(request, post_id):
         form = blogpost_form(instance=post)
 
     return render(request,'blog/post_update.html', {'form': form})
+
+@login_required
+def post_search(request):
+    query = request.GET.get('q')
+
+    if query:
+        posts = blog_post.objects.filter(
+            Q(title__icontains=query) |
+            Q(body__icontains=query) |
+            Q(author__username__icontains=query)
+        ).order_by('-created_at')
+    else:
+        posts = []
+
+    return render(request, 'blog/search.html', {'posts': posts, 'query': query})
     
     
 @login_required
